@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nextQuestion()
+        progressLabel.text = String(0)
+        scoreLabel.text = String(0)
     }
 
 
@@ -38,11 +40,14 @@ class ViewController: UIViewController {
         checkAnswer()
         questionNumber += 1
         nextQuestion()
+        updateUI()
     }
     
     
     func updateUI() {
-      scoreLabel.text = "\(score)/13"
+        scoreLabel.text = "\(score)"
+        progressLabel.text = "\(questionNumber + 1)/13"
+        progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber)
     }
     
 
